@@ -11,8 +11,21 @@
 		"build": "npx tsc",
 		"devBuild": "npx tsc -w"
 	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/angeluriot/Proverbot.git"
+	},
+	"keywords": [
+		"twitter-bot",
+		"text-generation",
+		"image-generation"
+	],
 	"author": "Angel Uriot",
 	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/angeluriot/Proverbot/issues"
+	},
+	"homepage": "https://github.com/angeluriot/Proverbot#readme",
 	"dependencies": {
 		"@types/node": "^17.0.36",
 		"@types/node-schedule": "^2.1.0",
