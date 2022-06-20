@@ -2,6 +2,7 @@
 /build
 /data
 /generated
+/history
 /node_modules
 /queue
 /.env
