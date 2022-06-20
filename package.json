@@ -1,0 +1,28 @@
+{
+	"name": "proverbot",
+	"version": "1.0.0",
+	"description": "A bot that generates proverbs",
+	"type": "module",
+	"scripts": {
+		"fstart": "forever start build/sources/main.js",
+		"fstop": "forever stop build/sources/main.js",
+		"gen": "node build/sources/generate.js",
+		"start": "node build/sources/main.js",
+		"build": "npx tsc",
+		"devBuild": "npx tsc -w"
+	},
+	"author": "Angel Uriot",
+	"license": "MIT",
+	"dependencies": {
+		"@types/node": "^17.0.36",
+		"@types/node-schedule": "^2.1.0",
+		"@types/twit": "^2.2.30",
+		"canvas": "^2.9.1",
+		"deepl-node": "^1.3.1",
+		"dotenv": "^16.0.1",
+		"forever": "^4.0.3",
+		"node-schedule": "^2.1.0",
+		"twit": "^2.2.11",
+		"typescript": "^4.7.2"
+	}
+}
