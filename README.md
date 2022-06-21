@@ -33,8 +33,8 @@ You can see its Twitter account here: [https://twitter.com/TheProverbot](https:/
 
 * Install the dependencies with:
 
-	```bash
-	npm install
+	```shell
+	$ npm install
 	```
 
 * Create folders named `data`, `generated` and `queue` in the root of the project
@@ -53,22 +53,22 @@ You can see its Twitter account here: [https://twitter.com/TheProverbot](https:/
 
 * Build the project with:
 
-	```bash
-	npm run build
+	```shell
+	$ npm run build
 	```
 
 * Start the project:
 
-	* To generate 100 images:
+	* To generate 10 images:
 
-		```bash
-		npm run gen
+		```shell
+		$ npm run gen -- 10
 		```
 
 	* To start the bot:
 
-		```bash
-		npm run start
+		```shell
+		$ npm run start
 		```
 
 <br/>

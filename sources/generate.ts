@@ -12,7 +12,7 @@ async function main(): Promise<void>
 	authentication();
 	Image.import_fonts();
 
-	const nb_new = 100;
+	const nb_new = process.argv[2] ? parseInt(process.argv[2]) : 0;
 	const nb_old = await Files.get_nb_genereted();
 
 	for (let i = nb_old; i < nb_new; i++)
