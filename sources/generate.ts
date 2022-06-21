@@ -17,10 +17,16 @@ async function main(): Promise<void>
 
 	for (let i = nb_old; i < nb_new; i++)
 	{
-		let sentence = Data.generate_sentence();
-		console.log((i + 1) + ') ' + sentence);
-		let french_sentence = await translated_sentence(sentence);
-		await Image.create_image(french_sentence, './generated');
+		let  final_sentence = '';
+
+		while (final_sentence.trim() == '')
+		{
+			let sentence = Data.generate_sentence();
+			final_sentence = await translated_sentence(sentence);
+		}
+
+		await Image.create_image(final_sentence, './generated');
+		console.log((i + 1) + ') ' + final_sentence);
 	}
 
 	process.exit();

@@ -15,9 +15,15 @@ async function post(): Promise<void>
 
 	if (image == null)
 	{
-		let sentence = Data.generate_sentence();
-		let french_sentence = await Translate.translated_sentence(sentence);
-		await Image.create_image(french_sentence, './queue');
+		let final_sentence = '';
+
+		while (final_sentence.trim() == '')
+		{
+			let sentence = Data.generate_sentence();
+			final_sentence = await Translate.translated_sentence(sentence);
+		}
+
+		await Image.create_image(final_sentence, './queue');
 		await Utils.sleep(1000);
 		image = await Files.get_random_queue() as string;
 	}
