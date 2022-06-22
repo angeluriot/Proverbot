@@ -41,8 +41,9 @@ async function main(): Promise<void>
 	Twitter.authentication();
 	Image.import_fonts();
 
-	schedule.scheduleJob('0 8 * * *', post);
-	schedule.scheduleJob('0 14 * * *', post);
+	schedule.scheduleJob('0 7 * * *', post);
+	schedule.scheduleJob('0 12 * * *', post);
+	schedule.scheduleJob('0 16 * * *', post);
 	schedule.scheduleJob('0 20 * * *', post);
 }
 
