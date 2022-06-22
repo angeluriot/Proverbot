@@ -39,13 +39,8 @@ export function get_verbs(suite: Handle, able: boolean = false): Prop.Verb[]
 	}
 
 	for (let verb of temp)
-	{
-		if (!able)
+		if (!able || verb.able != null)
 			verbs.push(verb);
-
-		else if (able && verb.able != null)
-			verbs.push(verb);
-	}
 
 	return verbs;
 }
@@ -60,13 +55,8 @@ export function get_nouns(thing: boolean, person: boolean, concept: boolean, plu
 		person ? Global.people : [], concept ? Global.concepts : []);
 
 	for (let noun of Global_nouns)
-	{
-		if (!plural)
+		if (!plural || noun.plural != null)
 			temp_1.push(noun);
-
-		else if (plural && noun.plural != null)
-			temp_1.push(noun);
-	}
 
 	for (let noun of temp_1)
 	{
@@ -114,13 +104,8 @@ export function get_concepts(plural: boolean, possessive: Handle, no_a: boolean 
 	let concepts: Prop.Concept[] = [];
 
 	for (let concept of temp)
-	{
-		if (!the_ness_of)
+		if (!the_ness_of || concept.the_ness_of)
 			concepts.push(concept);
-
-		else if (the_ness_of && concept.the_ness_of)
-			concepts.push(concept);
-	}
 
 	return concepts;
 }
