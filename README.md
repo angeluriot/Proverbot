@@ -8,7 +8,7 @@
 
 <br/>
 
-This repository contains the source code of a bot that generate random french proverb images and post them on Twitter. *(Inspired by **[InspiroBot](https://inspirobot.me/)**)*
+This repository contains the source code of a bot that generate random French proverb images and post them on Twitter. *(Inspired by **[InspiroBot](https://inspirobot.me/)**)*
 
 You can see its Twitter account here: [https://twitter.com/TheProverbot](https://twitter.com/TheProverbot).
 
