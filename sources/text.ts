@@ -42,9 +42,6 @@ export function noun_to_text(noun: Prop.Word, plural: Handle, possessive: Handle
 	{
 		if (str == 'a someone') return 'someone';
 		if (str == 'A someone') return 'Someone';
-		if (str == 'the internet') return 'internet';
-		if (str == 'The internet') return 'Internet';
-		if (str == 'the god' || str == 'The god') return 'God';
 		return str;
 	}
 
@@ -71,14 +68,21 @@ export function noun_to_text(noun: Prop.Word, plural: Handle, possessive: Handle
 	if ((noun.possessive == 2 && possessive != 0) || (noun.possessive != 0 && possessive == 2))
 		articles = [possessive_article];
 
-	if (articles.length == 0)
+	if (articles.length == 0 && no_a && (noun as Prop.Thing | Prop.Concept).a)
 		plural = 2;
 
 	if (noun.plural == null || plural == 0 || (plural == 1 && Utils.random_probability(0.5)))
 	{
 		Global.last_word_plural = false;
-		let article = Utils.get_random(articles);
-		return check(article + ' ' + noun.singular);
+
+		if (articles.length == 0)
+			return check(noun.singular);
+
+		else
+		{
+			let article = Utils.get_random(articles);
+			return check(article + ' ' + noun.singular);
+		}
 	}
 
 	Global.last_word_plural = true;
