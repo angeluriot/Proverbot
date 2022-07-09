@@ -9,6 +9,9 @@ import * as Utils from './utils.js';
 import schedule from 'node-schedule';
 config();
 
+/**
+ * Take an image from the queue or generate it then post it on Twitter.
+ */
 async function post(): Promise<void>
 {
 	let image = await Files.get_random_queue();

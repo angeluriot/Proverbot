@@ -3,20 +3,20 @@ import Twit from 'twit';
 
 export class Global
 {
-	static translator: deepl.Translator;
-	static twitter_client: Twit;
-	static post: any;
-	static generators: (() => string)[] = [];
-	static adjectives: Adjective[] = [];
-	static verbs: Verb[] = [];
-	static things: Thing[] = [];
-	static people: Person[] = [];
-	static concepts: Concept[] = [];
-	static verb_nouns: VerbNoun[] = [];
-	static sentences: Sentence[] = [];
-	static images: Image[] = [];
-	static fonts: Font[] = [];
-	static last_word_plural = false;
+	static translator: deepl.Translator;		// The DeepL translator
+	static twitter_client: Twit;				// The Twitter client
+	static post: any;							// The function to post a tweet
+	static generators: (() => string)[] = [];	// The list of generators
+	static adjectives: Adjective[] = [];		// The list of adjectives
+	static verbs: Verb[] = [];					// The list of verbs
+	static things: Thing[] = [];				// The list of things
+	static people: Person[] = [];				// The list of people
+	static concepts: Concept[] = [];			// The list of concepts
+	static verb_nouns: VerbNoun[] = [];			// The list of verb-nouns
+	static sentences: Sentence[] = [];			// The list of sentences
+	static images: Image[] = [];				// The list of images
+	static fonts: Font[] = [];					// The list of fonts
+	static last_word_plural = false;			// True if the last word was plural
 }
 
 export enum Handle { Not = 0, Both = 1, Only = 2 }

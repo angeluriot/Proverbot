@@ -2,12 +2,23 @@ import { Global, Handle } from './properties.js';
 import * as Prop from './properties.js';
 import * as Utils from './utils.js';
 
+/**
+ * Generate text from an adjective.
+ * @param adjective the adjective
+ * @returns the text
+ */
 export function adjective_to_text(adjective: Prop.Word): string
 {
 	adjective = adjective as Prop.Adjective;
 	return adjective.adjective;
 }
 
+/**
+ * Generate text from a verb.
+ * @param verb the verb
+ * @param time the time of the verb
+ * @returns the text
+ */
 export function verb_to_text(verb: Prop.Word, time: Prop.Time): string
 {
 	verb = verb as Prop.Verb;
@@ -20,6 +31,12 @@ export function verb_to_text(verb: Prop.Word, time: Prop.Time): string
 		return verb.ed;
 }
 
+/**
+ * Generate text from a noun.
+ * @param noun the noun
+ * @param plural if the noun is plural
+ * @returns the text
+ */
 export function noun_alone_to_text(noun: Prop.Word, plural: Handle): string
 {
 	noun = noun as Prop.Noun;
@@ -34,6 +51,15 @@ export function noun_alone_to_text(noun: Prop.Word, plural: Handle): string
 	return (noun.plural as string);
 }
 
+/**
+ * Generate text from a noun.
+ * @param noun the noun
+ * @param plural if the noun is plural
+ * @param possessive if the noun can have possessive articles
+ * @param possessive_article the possessive article
+ * @param no_a avoid choosing the a article
+ * @returns the text
+ */
 export function noun_to_text(noun: Prop.Word, plural: Handle, possessive: Handle, possessive_article: string, no_a: boolean = false): string
 {
 	noun = noun as Prop.Noun;
@@ -94,6 +120,13 @@ export function noun_to_text(noun: Prop.Word, plural: Handle, possessive: Handle
 	return check(noun.plural as string);
 }
 
+/**
+ * Generate text from a verb noun.
+ * @param verb_noun the verb noun
+ * @param time the time of the verb
+ * @param possessive_article the possessive article
+ * @returns the text
+ */
 export function verb_noun_to_text(verb_noun: Prop.Word, time: Prop.Time, possessive_article: string): string
 {
 	verb_noun = verb_noun as Prop.VerbNoun;
@@ -106,6 +139,11 @@ export function verb_noun_to_text(verb_noun: Prop.Word, time: Prop.Time, possess
 		return Utils.replace_possessive(verb_noun.ed, possessive_article);
 }
 
+/**
+ * Generate text from a sentence.
+ * @param sentence the sentence
+ * @returns the text
+ */
 export function sentence_to_text(sentence: Prop.Word): string
 {
 	sentence = sentence as Prop.Sentence;

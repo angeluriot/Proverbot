@@ -5,12 +5,23 @@ import * as Prop from './properties.js';
 const Canvas = (Bug as any).default;
 import fs from 'fs';
 
+/**
+ * Import all fonts.
+ */
 export function import_fonts()
 {
 	for (let font of Global.fonts)
 		Canvas.registerFont(font.url, { family: font.name });
 }
 
+/**
+ * Give the box of a text.
+ * @param context the canvas context
+ * @param lines the text lines
+ * @param font the font
+ * @param font_size the font size
+ * @returns the box
+ */
 function get_box(context: any, lines: string[], font: string, font_size: number): { width: number, height: number }
 {
 	let width = 0;
@@ -23,6 +34,18 @@ function get_box(context: any, lines: string[], font: string, font_size: number)
 	return { width: width, height: lines.length * font_size + (lines.length - 1) * font_size * 0.2 };
 }
 
+/**
+ * Check if the text fit in the image.
+ * @param context the canvas context
+ * @param text the text
+ * @param min_x the minimum x
+ * @param min_y the minimum y
+ * @param max_x the maximum x
+ * @param max_y the maximum y
+ * @param font the font
+ * @param font_size the font size
+ * @returns the text lines
+ */
 function is_text_enter(context: any, text: string, min_x: number, min_y: number, max_x: number,
 	max_y: number, font: string, font_size: number): string[] | null
 {
@@ -53,6 +76,18 @@ function is_text_enter(context: any, text: string, min_x: number, min_y: number,
 	return lines;
 }
 
+/**
+ * Find the best font size to fit the text in the image.
+ * @param context the canvas context
+ * @param text the text
+ * @param min_x the minimum x
+ * @param min_y the minimum y
+ * @param max_x the maximum x
+ * @param max_y the maximum y
+ * @param font the font
+ * @param max_font_size the maximum font size
+ * @returns the font size
+ */
 function find_size(context: any, text: string, min_x: number, min_y: number, max_x: number,
 	max_y: number, font: string, max_font_size: number): { font_size: number, lines: string[] }
 {
@@ -64,6 +99,19 @@ function find_size(context: any, text: string, min_x: number, min_y: number, max
 	return { font_size: font_size, lines: lines };
 }
 
+/**
+ * Write the text on the image.
+ * @param context the canvas context
+ * @param text the text
+ * @param min_x the minimum x
+ * @param min_y the minimum y
+ * @param max_x the maximum x
+ * @param max_y the maximum y
+ * @param align the alignement
+ * @param font the font
+ * @param max_font_size the maximum font size
+ * @param font_color the font color
+ */
 function write_text(context: any, text: string, min_x: number, min_y: number, max_x: number,
 	max_y: number, align: Prop.Align, font: string, max_font_size: number, font_color: string): void
 {
@@ -93,6 +141,11 @@ function write_text(context: any, text: string, min_x: number, min_y: number, ma
 	}
 }
 
+/**
+ * Create the image from the sentence.
+ * @param sentence the sentence
+ * @param location the location of the image
+ */
 export async function create_image(sentence: string, location: string): Promise<void>
 {
 	const canvas = Canvas.createCanvas(1000, 1000);

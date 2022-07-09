@@ -3,6 +3,9 @@ import { Global } from './properties.js';
 import util from 'util';
 import fs from 'fs';
 
+/**
+ * Authenticate with the Twitter API.
+ */
 export function authentication(): void
 {
 	Global.twitter_client = new Twit({
@@ -15,6 +18,10 @@ export function authentication(): void
 	Global.post = util.promisify(Global.twitter_client.post).bind(Global.twitter_client);
 }
 
+/**
+ * Tweet a image.
+ * @param image the image
+ */
 export async function tweet(image: string): Promise<void>
 {
 	let b64content = fs.readFileSync(image, { encoding: 'base64' });

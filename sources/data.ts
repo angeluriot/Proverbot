@@ -2,6 +2,11 @@ import { Global, Handle } from './properties.js';
 import * as Prop from './properties.js';
 import * as Utils from './utils.js';
 
+/**
+ * Give all adjectives that fit these parameters.
+ * @param be if the adjective can be used for a person
+ * @returns the list of adjectives
+ */
 export function get_adjectives(be: Handle): Prop.Adjective[]
 {
 	let adjectives: Prop.Adjective[] = [];
@@ -21,6 +26,12 @@ export function get_adjectives(be: Handle): Prop.Adjective[]
 	return adjectives;
 }
 
+/**
+ * Give all verbs that fit these parameters.
+ * @param suite if the verb can have a suite
+ * @param able if the verb has an -able form
+ * @returns the list of verbs
+ */
 export function get_verbs(suite: Handle, able: boolean = false): Prop.Verb[]
 {
 	let verbs: Prop.Verb[] = [];
@@ -45,6 +56,16 @@ export function get_verbs(suite: Handle, able: boolean = false): Prop.Verb[]
 	return verbs;
 }
 
+/**
+ * Give all nouns that fit these parameters.
+ * @param thing include things
+ * @param person include people
+ * @param concept include concepts
+ * @param plural if the noun can be plural
+ * @param possessive if the noun can have possessive articles
+ * @param no_a avoid nouns with only the a article
+ * @returns the list of nouns
+ */
 export function get_nouns(thing: boolean, person: boolean, concept: boolean, plural: boolean,
 	possessive: Handle, no_a: boolean = false): Prop.Noun[]
 {
@@ -88,16 +109,38 @@ export function get_nouns(thing: boolean, person: boolean, concept: boolean, plu
 	return nouns;
 }
 
+/**
+ * Give all things that fit these parameters.
+ * @param plural if the thing can be plural
+ * @param possessive if the thing can have possessive articles
+ * @param no_a avoid things with only the a article
+ * @returns the list of things
+ */
 export function get_things(plural: boolean, possessive: Handle, no_a: boolean = false): Prop.Thing[]
 {
 	return get_nouns(true, false, false, plural, possessive, no_a) as Prop.Thing[];
 }
 
+/**
+ * Give all people that fit these parameters.
+ * @param plural if the person can be plural
+ * @param possessive if the person can have possessive articles
+ * @param no_a avoid people with only the a article
+ * @returns the list of people
+ */
 export function get_people(plural: boolean, possessive: Handle, no_a: boolean = false): Prop.Person[]
 {
 	return get_nouns(false, true, false, plural, possessive, no_a) as Prop.Person[];
 }
 
+/**
+ * Give all concepts that fit these parameters.
+ * @param plural if the concept can be plural
+ * @param possessive if the concept can have possessive articles
+ * @param no_a avoid concepts with only the a article
+ * @param the_ness_of if the concept can be use in a "the -ness of" form
+ * @returns the list of concepts
+ */
 export function get_concepts(plural: boolean, possessive: Handle, no_a: boolean = false, the_ness_of: boolean = false): Prop.Concept[]
 {
 	let temp = get_nouns(false, false, true, plural, possessive, no_a) as Prop.Concept[];
@@ -110,6 +153,18 @@ export function get_concepts(plural: boolean, possessive: Handle, no_a: boolean 
 	return concepts;
 }
 
+/**
+ * Give all nouns for after a verb that fits these parameters.
+ * @param verb the verb
+ * @param suite if the verb can have a suite
+ * @param thing if the noun can be a thing
+ * @param person if the noun can be a person
+ * @param concept if the noun can be a concept
+ * @param plural if the noun can be plural
+ * @param possessive if the noun can have possessive articles
+ * @param no_a avoid nouns with only the a article
+ * @returns the list of nouns
+ */
 export function get_noun_from_verb(verb: Prop.Word, suite: Handle, thing: boolean, person: boolean,
 	concept: boolean, plural: boolean, possessive: Handle, no_a: boolean = false): Prop.Noun | null
 {
@@ -123,16 +178,29 @@ export function get_noun_from_verb(verb: Prop.Word, suite: Handle, thing: boolea
 	return null;
 }
 
+/**
+ * Give all verbs with a noun after.
+ * @returns the list of verbs nouns
+ */
 export function get_verb_nouns()
 {
 	return Global.verb_nouns;
 }
 
+/**
+ * Give all sentences.
+ * @returns the list of sentences
+ */
 export function get_sentences()
 {
 	return Global.sentences;
 }
 
+/**
+ * Choose a random element from a list of lists.
+ * @param arrays the list of lists
+ * @returns the random element and the list it came from
+ */
 export function choose_random(arrays: Prop.Word[][]): { array_id: number, word: Prop.Word }
 {
 	let ids: { array_id: number, id: number }[] = [];
@@ -154,6 +222,10 @@ export function choose_random(arrays: Prop.Word[][]): { array_id: number, word: 
 	};
 }
 
+/**
+ * Generate a random sentence.
+ * @returns the sentence
+ */
 export function generate_sentence()
 {
 	let generator = Utils.get_random(Global.generators);
