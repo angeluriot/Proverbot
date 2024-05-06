@@ -1,4 +1,4 @@
-# Proverbot
+# 💭 Proverbot
 
 ![Release](https://img.shields.io/badge/Release-v1.0-blueviolet)
 ![Language](https://img.shields.io/badge/Language-JavaScript-ffcc14)
@@ -20,16 +20,16 @@ You can see its Twitter account here: [https://twitter.com/TheProverbot](https:/
 
 <br/>
 
-# Summary
+# 📋 Summary
 
-* **[Summary](#summary)**
-* **[Install](#install)**
-* **[Tests](#tests)**
-* **[Credits](#credits)**
+* **[📋 Summary](#-summary)**
+* **[🛠️ Install](#%EF%B8%8F-install)**
+* **[🧪 Tests](#-tests)**
+* **[🙏 Credits](#-credits)**
 
 <br/>
 
-# Install
+# 🛠️ Install
 
 * Install the dependencies with:
 
@@ -73,7 +73,7 @@ You can see its Twitter account here: [https://twitter.com/TheProverbot](https:/
 
 <br/>
 
-# Tests
+# 🧪 Tests
 
 <p align="center">
 	<img src="misc/test_1.png" width="400">
@@ -89,6 +89,6 @@ You can see its Twitter account here: [https://twitter.com/TheProverbot](https:/
 
 <br/>
 
-# Credits
+# 🙏 Credits
 
 * [**Angel Uriot**](https://github.com/angeluriot) : Creator of the project.
