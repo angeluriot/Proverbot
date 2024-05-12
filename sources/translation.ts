@@ -6,7 +6,7 @@ import * as deepl from 'deepl-node';
  */
 export function authentication(): void
 {
-	Global.translator = new deepl.Translator((process.env.DEEPL_KEY as string));
+	Global.translator = new deepl.Translator((process.env['DEEPL_KEY'] as string));
 }
 
 /**

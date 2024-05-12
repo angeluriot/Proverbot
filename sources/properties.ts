@@ -1,11 +1,10 @@
 import * as deepl from 'deepl-node';
-import Twit from 'twit';
+import { TwitterApiReadWrite } from 'twitter-api-v2';
 
 export class Global
 {
 	static translator: deepl.Translator;		// The DeepL translator
-	static twitter_client: Twit;				// The Twitter client
-	static post: any;							// The function to post a tweet
+	static twitter_client: TwitterApiReadWrite;	// The Twitter client
 	static generators: (() => string)[] = [];	// The list of generators
 	static adjectives: Adjective[] = [];		// The list of adjectives
 	static verbs: Verb[] = [];					// The list of verbs

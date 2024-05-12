@@ -1,21 +1,17 @@
-import Twit from 'twit';
+import { TwitterApi } from 'twitter-api-v2';
 import { Global } from './properties.js';
-import util from 'util';
-import fs from 'fs';
 
 /**
  * Authenticate with the Twitter API.
  */
 export function authentication(): void
 {
-	Global.twitter_client = new Twit({
-		consumer_key: process.env.TWITTER_API_KEY as string,
-		consumer_secret: process.env.TWITTER_API_SECRET as string,
-		access_token: process.env.TWITTER_ACCESS_TOKEN as string,
-		access_token_secret: process.env.TWITTER_ACCESS_SECRET as string
-	});
-
-	Global.post = util.promisify(Global.twitter_client.post).bind(Global.twitter_client);
+	Global.twitter_client = new TwitterApi({
+		appKey: process.env['TWITTER_APP_KEY'] as string,
+		appSecret: process.env['TWITTER_APP_SECRET'] as string,
+		accessToken: process.env['TWITTER_ACCESS_TOKEN'] as string,
+		accessSecret: process.env['TWITTER_ACCESS_SECRET'] as string
+	}).readWrite;
 }
 
 /**
@@ -24,12 +20,11 @@ export function authentication(): void
  */
 export async function tweet(image: string): Promise<void>
 {
-	let b64content = fs.readFileSync(image, { encoding: 'base64' });
-	const data = await Global.post('media/upload', { media_data: b64content });
+	const media_id = await Global.twitter_client.v1.uploadMedia(image);
 
-	var meta_params = { media_id: data.media_id_string, alt_text: { text: '' } };
-	await Global.post('media/metadata/create', meta_params);
-
-	var params = { status: '', media_ids: [data.media_id_string] };
-	await Global.post('statuses/update', params);
+	await Global.twitter_client.v2.tweet({
+		media: {
+			media_ids: [media_id]
+		}
+	});
 }
