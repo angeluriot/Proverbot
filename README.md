@@ -39,12 +39,12 @@ You can see its Twitter account here: [https://twitter.com/TheProverbot](https:/
 
 * Create folders named `data`, `generated` and `queue` in the root of the project
 
-* Create a file named `.env` in the root of the project with the following content:
+* Create a file named `.env` in the root of the project with the following content (see the `.env.template` file):
 
 	```
 	DEEPL_KEY=<your DeepL API key>
-	TWITTER_API_KEY=<your Twitter API key>
-	TWITTER_API_SECRET=<your Twitter API secret>
+	TWITTER_APP_KEY=<your Twitter app key>
+	TWITTER_APP_SECRET=<your Twitter app secret>
 	TWITTER_ACCESS_TOKEN=<your Twitter access token>
 	TWITTER_ACCESS_SECRET=<your Twitter access secret>
 	```
